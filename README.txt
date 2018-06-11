@@ -1,5 +1,6 @@
-Type "stand" to stand with your cards.
 Type "hit" to pick up a card.
+Type "stand" to stand with your cards.
+Type "double" to double your bets.
 Type "surrender" to surrend your hand
 Type "quit" to exit the game.
 Type "restart" to restart the game.
