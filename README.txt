@@ -24,8 +24,8 @@ STRAGEGY
 Any strategy can be fed into the .png photo.
 S ... Stand
 H ... Hit
-Sr ... Surrender // NOT HERE
-D ... Double Down // NOT HERE
+Sr ... Surrender
+D ... Double Down
 P ... Split // NOT HERE
 
 
