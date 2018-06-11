@@ -1,3 +1,6 @@
+Lauch the command : "make && ./blackjack" to play.
+________________________________________
+
 Type "hit" to pick up a card.
 Type "stand" to stand with your cards.
 Type "double" to double your bets.
