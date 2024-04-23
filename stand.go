@@ -13,7 +13,7 @@ func stand(bankhandvalue int, playerhandvalue int) int {
 	color.Unset()
 	card2 := random()
 	if bankhandvalue == 11 && card2 == 11 {
-		bankhandvalue = 13
+		bankhandvalue = 12
 	} else {
 		bankhandvalue = bankhandvalue + card2
 	}

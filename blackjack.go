@@ -7,7 +7,8 @@ import (
 	"github.com/fatih/color"
 )
 
-func infinitegame(playerhandvalue int, bankhandvalue int, chips int, bets int) {
+func infinitegame(playerCard1 int, playerCard2 int, bankhandvalue int, chips int, bets int) {
+	playerhandvalue := playerCard1 + playerCard2
 	for {
 		var action string
 		fmt.Scanf("%s", &action)
@@ -39,6 +40,22 @@ func infinitegame(playerhandvalue int, bankhandvalue int, chips int, bets int) {
 				chips = doublestandendgame(bankhandvalue, playerhandvalue, action, bets, chips)
 				chips = doublethewinneris(bankhandvalue, playerhandvalue, chips, bets)
 			}
+		} else if action == "split" {
+			playerCard1 = 8
+			playerCard2 = 8
+			fmt.Println("playerCard1 > ", playerCard1)
+			fmt.Println("playerCard2 > ", playerCard2)
+			if chips-bets < 0 {
+				color.Set(color.FgRed, color.Bold)
+				fmt.Println("\nSorry, you haven't enought money to split your hand.")
+				color.Unset()
+			} else if playerCard1 != playerCard2 {
+				fmt.Println("\nSorry, you can not split your hand as your two cards are differents.")
+			} else {
+				fmt.Println("SPLIT SUCCESSS")
+				_, _, _ = split(playerCard1, playerCard2, bankhandvalue, chips, bets)
+
+			}
 		} else {
 			color.Set(color.FgRed, color.Bold)
 			fmt.Println("\nPlease, enter a real decision.")
@@ -65,14 +82,14 @@ func luckyhand(playerhandvalue int, bankhandvalue int, chips int, bets int) int 
 func blackjack() {
 	chips := placeyourbets()
 	chips, bets := betamount(chips)
-	playerhandvalue := initplayers()
+	playerCard1, playerCard2 := initplayers()
 	bankhandvalue := initbank()
-	chips = luckyhand(playerhandvalue, bankhandvalue, chips, bets)
+	chips = luckyhand(playerCard1+playerCard2, bankhandvalue, chips, bets)
 	decision()
 	color.Set(color.FgWhite, color.Bold)
 	fmt.Print("> ")
 	color.Unset()
-	infinitegame(playerhandvalue, bankhandvalue, chips, bets)
+	infinitegame(playerCard1, playerCard2, bankhandvalue, chips, bets)
 }
 
 func blackjack2(chips int) {
@@ -85,14 +102,14 @@ func blackjack2(chips int) {
 	}
 	color.Unset()
 	chips, bets := betamount(chips)
-	playerhandvalue := initplayers()
+	playerCard1, playerCard2 := initplayers()
 	bankhandvalue := initbank()
-	chips = luckyhand(playerhandvalue, bankhandvalue, chips, bets)
+	chips = luckyhand(playerCard1+playerCard2, bankhandvalue, chips, bets)
 	decision()
 	color.Set(color.FgWhite, color.Bold)
 	fmt.Print("> ")
 	color.Unset()
-	infinitegame(playerhandvalue, bankhandvalue, chips, bets)
+	infinitegame(playerCard1, playerCard2, bankhandvalue, chips, bets)
 }
 
 func main() {

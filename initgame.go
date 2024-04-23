@@ -57,18 +57,18 @@ func placeyourbets() int {
 	return chips
 }
 
-func initplayers() int {
-	card1 := random()
-	card2 := random()
-	playerhandvalue := card1 + card2
+func initplayers() (int, int) {
+	playerCard1 := random()
+	playerCard2 := random()
+	playerhandvalue := playerCard1 + playerCard2
 	if playerhandvalue == 22 {
-		playerhandvalue = 13
+		playerhandvalue = 12
 	}
 	fmt.Println()
 	color.Set(color.FgWhite, color.Bold)
 	fmt.Printf("\nYour hand value : %d", playerhandvalue)
 	color.Unset()
-	return (playerhandvalue)
+	return playerCard1, playerCard2
 }
 
 func initbank() int {
@@ -87,6 +87,7 @@ func decision() {
 	fmt.Println("Type \"hit\" to hit a card")
 	fmt.Println("Type \"stand\" to stand with your cards")
 	fmt.Println("Type \"double\" your bets and pick up only one card")
+	fmt.Println("Type \"split\" and play with double game cards")
 	fmt.Println("Type \"surrender\" to surrend your hand")
 	fmt.Println("Type \"chips\" to see your chips amount")
 	fmt.Println("Type \"restart\" to restart the game")
