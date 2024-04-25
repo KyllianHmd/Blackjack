@@ -17,7 +17,7 @@ func double(playerhandvalue int, bankhandvalue int, chips int, bets int) (int, i
 	fmt.Println()
 	color.Set(color.FgWhite, color.Bold)
 	chips = chips - bets
-	fmt.Printf("You have bets now %d chips", bets*2)
+	fmt.Printf("You have now bets %d chips", bets*2)
 	fmt.Printf("\nYou have now %d chips\n", chips)
 	fmt.Println()
 	fmt.Println("You are hitting a card...")
@@ -50,7 +50,7 @@ func doublestand(bankhandvalue int, playerhandvalue int) int {
 	card2 := random()
 	bankhandvalue = bankhandvalue + card2
 	color.Set(color.FgWhite, color.Bold)
-	fmt.Println("The dealer hit a card...")
+	fmt.Printf("The dealer hit a %d card...\n", card2)
 	time.Sleep(1 * time.Second)
 	fmt.Printf("The dealer's hand value : %d\n", bankhandvalue)
 	color.Unset()
@@ -61,7 +61,7 @@ func doublestand(bankhandvalue int, playerhandvalue int) int {
 		i = i + 1
 		bankhandvalue = bankhandvalue + cardx
 		color.Set(color.FgWhite, color.Bold)
-		fmt.Println("The dealer hit a card...")
+		fmt.Printf("The dealer hit a %d card...\n", cardx)
 		time.Sleep(1 * time.Second)
 		fmt.Printf("The dealer's hand value : %d\n", bankhandvalue)
 		color.Unset()

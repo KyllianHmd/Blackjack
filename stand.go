@@ -19,7 +19,7 @@ func stand(bankhandvalue int, playerhandvalue int) int {
 	}
 	bankhandvalue = bankhandvalue + card2
 	color.Set(color.FgWhite, color.Bold)
-	fmt.Println("The dealer hit a card...")
+	fmt.Printf("The dealer hit a %d card...\n", card2)
 	time.Sleep(1 * time.Second)
 	fmt.Printf("The dealer's hand value : %d\n", bankhandvalue)
 	color.Unset()
@@ -30,7 +30,7 @@ func stand(bankhandvalue int, playerhandvalue int) int {
 		i = i + 1
 		bankhandvalue = bankhandvalue + cardx
 		color.Set(color.FgWhite, color.Bold)
-		fmt.Println("The dealer hit a card...")
+		fmt.Printf("The dealer hit a %d card...\n", cardx)
 		time.Sleep(1 * time.Second)
 		fmt.Printf("The dealer's hand value : %d\n", bankhandvalue)
 		color.Unset()

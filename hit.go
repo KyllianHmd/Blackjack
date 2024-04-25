@@ -10,7 +10,7 @@ import (
 func hit(playerhandvalue int, bankhandvalue int) int {
 	card3 := random()
 	if playerhandvalue == 11 && card3 == 11 {
-		playerhandvalue = 13
+		playerhandvalue = 12
 	} else {
 		playerhandvalue = playerhandvalue + card3
 	}

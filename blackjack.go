@@ -41,10 +41,6 @@ func infinitegame(playerCard1 int, playerCard2 int, bankhandvalue int, chips int
 				chips = doublethewinneris(bankhandvalue, playerhandvalue, chips, bets)
 			}
 		} else if action == "split" {
-			playerCard1 = 8
-			playerCard2 = 8
-			fmt.Println("playerCard1 > ", playerCard1)
-			fmt.Println("playerCard2 > ", playerCard2)
 			if chips-bets < 0 {
 				color.Set(color.FgRed, color.Bold)
 				fmt.Println("\nSorry, you haven't enought money to split your hand.")
@@ -52,9 +48,7 @@ func infinitegame(playerCard1 int, playerCard2 int, bankhandvalue int, chips int
 			} else if playerCard1 != playerCard2 {
 				fmt.Println("\nSorry, you can not split your hand as your two cards are differents.")
 			} else {
-				fmt.Println("SPLIT SUCCESSS")
 				_, _, _ = split(playerCard1, playerCard2, bankhandvalue, chips, bets)
-
 			}
 		} else {
 			color.Set(color.FgRed, color.Bold)
