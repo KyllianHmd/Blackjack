@@ -9,11 +9,10 @@ import (
 
 func double(playerhandvalue int, bankhandvalue int, chips int, bets int) (int, int, int) {
 	card3 := random()
-	if playerhandvalue == 11 && card3 == 11 {
-		playerhandvalue = 12
-	} else {
-		playerhandvalue = playerhandvalue + card3
+	if playerhandvalue >= 11 && card3 == 11 {
+		card3 = 1
 	}
+	playerhandvalue = playerhandvalue + card3
 	fmt.Println()
 	color.Set(color.FgWhite, color.Bold)
 	chips = chips - bets

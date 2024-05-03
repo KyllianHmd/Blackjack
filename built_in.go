@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"time"
 
@@ -23,7 +22,7 @@ func howmanychips(chips int) {
 
 func quit() {
 	color.Set(color.FgCyan, color.Bold)
-	b, err := ioutil.ReadFile("cya.txt")
+	b, err := os.ReadFile("cya.txt")
 	if err != nil {
 		fmt.Print(err)
 	}
@@ -58,7 +57,7 @@ func again(action string, chips int) {
 		blackjack2(chips)
 	} else {
 		color.Set(color.FgCyan, color.Bold)
-		b, err := ioutil.ReadFile("cya.txt")
+		b, err := os.ReadFile("cya.txt")
 		if err != nil {
 			fmt.Print(err)
 		}

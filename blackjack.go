@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 
 	"github.com/fatih/color"
 )
@@ -48,7 +48,7 @@ func infinitegame(playerCard1 int, playerCard2 int, bankhandvalue int, chips int
 			} else if playerCard1 != playerCard2 {
 				fmt.Println("\nSorry, you can not split your hand as your two cards are differents.")
 			} else {
-				_, _, _ = split(playerCard1, playerCard2, bankhandvalue, chips, bets)
+				chips = split(playerCard1, playerCard2, bankhandvalue, chips, bets)
 			}
 		} else {
 			color.Set(color.FgRed, color.Bold)
@@ -108,7 +108,7 @@ func blackjack2(chips int) {
 
 func main() {
 	color.Set(color.FgCyan, color.Bold)
-	b, err := ioutil.ReadFile("bj.txt")
+	b, err := os.ReadFile("bj.txt")
 	if err != nil {
 		fmt.Print(err)
 	}

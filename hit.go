@@ -9,11 +9,10 @@ import (
 
 func hit(playerhandvalue int, bankhandvalue int) int {
 	card3 := random()
-	if playerhandvalue == 11 && card3 == 11 {
-		playerhandvalue = 12
-	} else {
-		playerhandvalue = playerhandvalue + card3
+	if playerhandvalue >= 11 && card3 == 11 {
+		card3 = 1
 	}
+	playerhandvalue = playerhandvalue + card3
 	fmt.Println()
 	color.Set(color.FgWhite, color.Bold)
 	fmt.Println("You are hitting a card...")
