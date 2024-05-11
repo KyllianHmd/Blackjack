@@ -189,16 +189,134 @@ func splitthewinneris(bankhandvalue int, hand1 int, hand2 int, chips int, bets i
 	fmt.Printf("Your second hand value : %d\n", hand2)
 	fmt.Printf("The dealer's hand value : %d\n", bankhandvalue)
 	color.Unset()
-	if (bankhandvalue < hand1 && bankhandvalue < hand2) || (bankhandvalue > 21 && hand1 <= 21 && hand2 <= 21) {
-		chips = youwin2(action, chips, bets)
-	} else if bankhandvalue == hand1 && bankhandvalue < hand2 {
-		fmt.Println("Hand21 win, Hand2 lose")
-	} else if bankhandvalue < hand1 && bankhandvalue == hand2 {
-		fmt.Println("Hand2 lose, Hand1 win")
+	if (bankhandvalue < hand1 && bankhandvalue < hand2) && hand1 <= 21 && hand2 <= 21 {
+		fmt.Println("H1 win && H2 win")
+		chips = h1winh2win(action, chips, bets)
+	} else if bankhandvalue < hand1 && (bankhandvalue > hand2 || hand2 > 21) {
+		fmt.Println("H1 win && H2 lose")
+		chips = h1winh2lose(action, chips, bets)
+	} else if (bankhandvalue > hand1 || hand1 > 21) && (bankhandvalue < hand2 && hand2 <= 21) {
+		fmt.Println("H1 lose && H2 win")
+		chips = h1loseh2win(action, chips, bets)
+	} else if (bankhandvalue > hand1 || hand1 > 21) && (bankhandvalue > hand2 || hand2 > 21) {
+		fmt.Println("H1 lose && H2 lose")
+		chips = h1loseh2lose(action, chips, bets)
+	} else if (bankhandvalue > hand1 || hand1 > 21) && bankhandvalue == hand2 {
+		fmt.Println("H1 lose && H2 draw")
+		chips = h1loseh2draw(action, chips, bets)
+	} else if bankhandvalue == hand1 && (bankhandvalue > hand2 || hand2 > 21) {
+		fmt.Println("H1 draw && H2 lose")
+		chips = h1drawh2lose(action, chips, bets)
 	} else if bankhandvalue == hand1 && bankhandvalue == hand2 {
-		chips = draw2(action, chips, bets)
+		fmt.Println("H1 draw && H2 draw")
+		chips = h1drawh2draw(action, chips, bets)
+	} else if bankhandvalue == hand1 && bankhandvalue < hand2 {
+		fmt.Println("H1 draw && H2 win")
+		chips = h1drawh2win(action, chips, bets)
+	} else if bankhandvalue < hand1 && bankhandvalue == hand2 {
+		fmt.Println("H1 win && H2 draw")
+		chips = h1winh2draw(action, chips, bets)
 	} else {
-		chips = youlose2(action, chips, bets)
+		// chips = youlose2(action, chips, bets)
+		fmt.Println("AUTRE CAS !!")
 	}
+	return (chips)
+}
+
+func h1winh2win(action string, chips int, bets int) int {
+	color.Set(color.FgGreen, color.Bold)
+	fmt.Printf("\nYou won %d chips ! :-)", bets*2+bets*2)
+	chips = chips + bets*2 + bets*2
+	fmt.Printf("\nYou have now %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
+	return (chips)
+}
+
+func h1winh2lose(action string, chips int, bets int) int {
+	color.Set(color.FgGreen, color.Bold)
+	fmt.Printf("\nYou won %d chips ! :-)", bets*2)
+	chips = chips + bets*2
+	fmt.Printf("\nYou have now %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
+	return (chips)
+}
+
+func h1loseh2win(action string, chips int, bets int) int {
+	color.Set(color.FgGreen, color.Bold)
+	fmt.Printf("\nYou won %d chips ! :-)", bets*2)
+	chips = chips + bets*2
+	fmt.Printf("\nYou have now %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
+	return (chips)
+}
+
+func h1loseh2lose(action string, chips int, bets int) int {
+	color.Set(color.FgRed, color.Bold)
+	fmt.Printf("\nYou lost %d chips ! :-)", bets*2)
+	chips = chips - bets
+	fmt.Printf("\nYou have now %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
+	return (chips)
+}
+
+func h1loseh2draw(action string, chips int, bets int) int {
+	color.Set(color.FgRed, color.Bold)
+	fmt.Printf("\nYou lost %d chips ! :-)", bets*2)
+	chips = chips - bets
+	fmt.Printf("\nYou have now %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
+	return (chips)
+}
+
+func h1drawh2lose(action string, chips int, bets int) int {
+	color.Set(color.FgGreen, color.Bold)
+	fmt.Printf("\nYou lost %d chips ! :-)", bets*2)
+	chips = chips - bets
+	fmt.Printf("\nYou have now %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
+	return (chips)
+}
+
+func h1drawh2draw(action string, chips int, bets int) int {
+	color.Set(color.FgWhite, color.Bold)
+	fmt.Println("It's a draw, no one lose ! ;-)")
+	fmt.Printf("You have always %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
+	return (chips)
+}
+
+func h1drawh2win(action string, chips int, bets int) int {
+	color.Set(color.FgGreen, color.Bold)
+	fmt.Printf("\nYou won %d chips ! :-)", bets*2)
+	chips = chips + bets*2
+	fmt.Printf("\nYou have now %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
+	return (chips)
+}
+
+func h1winh2draw(action string, chips int, bets int) int {
+	color.Set(color.FgGreen, color.Bold)
+	fmt.Printf("\nYou won %d chips ! :-)", bets*2)
+	chips = chips + bets*2
+	fmt.Printf("\nYou have now %d chips !\n", chips)
+	color.Unset()
+	color.Set(color.FgCyan, color.Bold)
+	again(action, chips)
 	return (chips)
 }
