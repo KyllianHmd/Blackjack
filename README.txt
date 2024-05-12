@@ -4,7 +4,8 @@ ________________________________________
 Type "hit" to pick up a card.
 Type "stand" to stand with your cards.
 Type "double" to double your bets.
-Type "surrender" to surrend your hand
+Type "split" to split your hand.
+Type "surrender" to surrend your hand.
 Type "quit" to exit the game.
 Type "restart" to restart the game.
 Type "chips" to see your chips amount.
@@ -29,6 +30,6 @@ S ... Stand
 H ... Hit
 Sr ... Surrender
 D ... Double Down
-P ... Split // NOT HERE
+P ... Split
 
 
