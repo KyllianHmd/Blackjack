@@ -8,14 +8,14 @@ import (
 )
 
 func hit(playerhandvalue int, bankhandvalue int) int {
-	card3 := random()
-	if playerhandvalue >= 11 && card3 == 11 {
-		card3 = 1
+	cardx := random()
+	if playerhandvalue >= 11 && cardx == 11 {
+		cardx = 1
 	}
-	playerhandvalue = playerhandvalue + card3
+	playerhandvalue = playerhandvalue + cardx
 	fmt.Println()
 	color.Set(color.FgWhite, color.Bold)
-	fmt.Println("You are hitting a card...")
+	fmt.Printf("You are hitting a %d card...\n", cardx)
 	time.Sleep(1 * time.Second)
 	fmt.Printf("Your hand value : %d\n", playerhandvalue)
 	fmt.Printf("The dealer's hand value : %d\n", bankhandvalue)

@@ -17,7 +17,6 @@ func stand(bankhandvalue int, playerhandvalue int) int {
 	} else {
 		bankhandvalue = bankhandvalue + card2
 	}
-	bankhandvalue = bankhandvalue + card2
 	color.Set(color.FgWhite, color.Bold)
 	fmt.Printf("The dealer hit a %d card...\n", card2)
 	time.Sleep(1 * time.Second)

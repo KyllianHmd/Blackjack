@@ -58,17 +58,17 @@ func placeyourbets() int {
 }
 
 func initplayers() (int, int) {
-	// playerCard1 := random()
-	// playerCard2 := random()
-	// playerhandvalue := playerCard1 + playerCard2
-	// if playerhandvalue == 22 {
-	// 	playerhandvalue = 12
-	// }
+	playerCard1 := random()
+	playerCard2 := random()
+	playerhandvalue := playerCard1 + playerCard2
+	if playerhandvalue == 22 {
+		playerhandvalue = 12
+	}
 
 	// FOR THE TEST ---
-	playerCard1 := 8
-	playerCard2 := 8
-	playerhandvalue := playerCard1 + playerCard2
+	// playerCard1 := 10
+	// playerCard2 := 10
+	// playerhandvalue := playerCard1 + playerCard2
 	// FOR THE TEST ---
 
 	fmt.Println()
