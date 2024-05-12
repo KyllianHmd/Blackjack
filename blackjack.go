@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-
-	"github.com/fatih/color"
 )
 
 func infinitegame(playerCard1 int, playerCard2 int, bankhandvalue int, chips int, bets int) {
@@ -30,9 +28,7 @@ func infinitegame(playerCard1 int, playerCard2 int, bankhandvalue int, chips int
 			blackjack2(chips)
 		} else if action == "double" {
 			if chips-bets < 0 {
-				color.Set(color.FgRed, color.Bold)
 				fmt.Println("\nSorry, you haven't enought money to double your hand.")
-				color.Unset()
 			} else {
 				chips, playerhandvalue, bets = double(playerhandvalue, bankhandvalue, chips, bets)
 				doubleendgame(playerhandvalue, bankhandvalue, action, bets, chips)
@@ -42,31 +38,23 @@ func infinitegame(playerCard1 int, playerCard2 int, bankhandvalue int, chips int
 			}
 		} else if action == "split" {
 			if chips-bets < 0 {
-				color.Set(color.FgRed, color.Bold)
 				fmt.Println("\nSorry, you haven't enought money to split your hand.")
-				color.Unset()
 			} else if playerCard1 != playerCard2 {
 				fmt.Println("\nSorry, you can not split your hand as your two cards are differents.")
 			} else {
 				chips = split(playerCard1, playerCard2, bankhandvalue, chips, bets)
 			}
 		} else {
-			color.Set(color.FgRed, color.Bold)
 			fmt.Println("\nPlease, enter a real decision.")
-			color.Unset()
 		}
-		color.Set(color.FgWhite, color.Bold)
 		fmt.Print("\n> ")
-		color.Unset()
 	}
 }
 
 func luckyhand(playerhandvalue int, bankhandvalue int, chips int, bets int) int {
 	if playerhandvalue == 21 && bankhandvalue != 11 {
-		color.Set(color.FgGreen, color.Bold)
 		fmt.Println("\nB L A C K J A C K !")
 		fmt.Println("You won x1.5 your bets !")
-		color.Unset()
 		chips = chips + bets*2 + bets/2
 		blackjack2(chips)
 	}
@@ -80,39 +68,31 @@ func blackjack() {
 	bankhandvalue := initbank()
 	chips = luckyhand(playerCard1+playerCard2, bankhandvalue, chips, bets)
 	decision()
-	color.Set(color.FgWhite, color.Bold)
 	fmt.Print("> ")
-	color.Unset()
 	infinitegame(playerCard1, playerCard2, bankhandvalue, chips, bets)
 }
 
 func blackjack2(chips int) {
-	color.Set(color.FgWhite, color.Bold)
 	fmt.Printf("\nYou have %d chips !", chips)
 	if chips == 0 {
 		fmt.Println("\nYou have lost all of your chips !")
 		fmt.Println("We are restarting you a new game.")
 		restart()
 	}
-	color.Unset()
 	chips, bets := betamount(chips)
 	playerCard1, playerCard2 := initplayers()
 	bankhandvalue := initbank()
 	chips = luckyhand(playerCard1+playerCard2, bankhandvalue, chips, bets)
 	decision()
-	color.Set(color.FgWhite, color.Bold)
 	fmt.Print("> ")
-	color.Unset()
 	infinitegame(playerCard1, playerCard2, bankhandvalue, chips, bets)
 }
 
 func main() {
-	color.Set(color.FgCyan, color.Bold)
 	b, err := os.ReadFile("bj.txt")
 	if err != nil {
 		fmt.Print(err)
 	}
 	fmt.Println(string(b))
-	color.Unset()
 	blackjack()
 }
